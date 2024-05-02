@@ -1,0 +1,105 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+
+.setbudget{
+     background-color: white;
+     padding:2rem 3rem;
+
+
+     &__container{
+        display:flex;
+        flex-direction: column;
+        gap:7rem;
+
+
+        background-color: #ebeeef;
+        padding:4rem 0;
+        
+     }
+
+     &__top-container{
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap:3rem;
+     }
+
+
+     &__label{
+      font-family: 'POP';
+     }
+
+     &__input-container{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      width:90vw;
+      height:10rem;      
+      border: 1px solid #ebeeef;
+      box-shadow:1px 3px 5px rgba(0, 0, 0, 0.3);
+     }
+
+     &__input{
+       position: relative;
+       width:40vw;
+       margin:auto;
+       height:4rem;
+       border: 1px solid red;
+      //  padding:0.75rem 3.25rem 3.25rem 4rem;
+
+       &:hover {
+         border:1px solid  #ebeeef;
+         }
+       &:active{
+         border:1px solid  #5b98ae;
+          }
+       &:focus {
+         outline: none; 
+         border: 1px solid #5b98ae; 
+         }
+
+     }
+
+   &__input-icon{
+     position: absolute;
+     left: 14rem; 
+     height: 2rem;
+   }
+
+  
+  &__input::placeholder {
+      color: #323232;    
+      font-size: 0.813rem;      
+  
+      @include tablet{
+          font-size: 0.875rem;  
+      }
+  }
+
+  &__button-container{
+   display:flex;
+   justify-content:flex-end;
+   padding-right:4rem;
+  }
+
+  &__button{
+   display:flex;
+   background-color: #4a6570;
+   color:#ebeeef;
+   border:none;
+   width:7rem;
+   height:2rem;
+   justify-content:center;
+   align-items: center;
+  }
+
+
+
+
+
+
+}
