@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import SetBudget from "./components/SetBudget/SetBudget";
+import InputExpense from "./components/InputExpense/InputExpense";
 
 import './App.scss';
 
@@ -12,7 +13,9 @@ function App() {
 
       <Routes> 
           {/* <Route path="/" element={<InputExpense />} />  */}
-          <Route path="/" element={<SetBudget/>} />
+          <Route path="/setbudget" element={<SetBudget/>} />
+          <Route path="/" element={<InputExpense/>} />
+          
           </Routes> 
        </BrowserRouter>
     

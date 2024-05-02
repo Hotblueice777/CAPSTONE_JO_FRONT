@@ -20,7 +20,7 @@ function Header() {
                     <NavLink to="/financialstatus" className="header__financialstatus-container">
                        <img className="header__financialstatus" src={financialstatus} alt="financialStatus" />
                     </NavLink>
-                    <NavLink to="/inventory" className="header__statement-container">
+                    <NavLink to="/setbudget" className="header__statement-container">
                        <img className="header__statement" src={statement} alt="statement" />
                     </NavLink>
                 </div>
