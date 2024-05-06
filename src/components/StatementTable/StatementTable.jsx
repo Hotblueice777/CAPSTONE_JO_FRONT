@@ -25,6 +25,11 @@ function StatementTable() {
         return expenses.filter(expense => new Date(expense.date) >= fortyDaysAgo);
     };
 
+    const formatAmount = (amount) => {
+        const num = Number(amount);
+        return num.toFixed(2);
+    };
+
     return (
         <div className="statement-table">
             <table>
@@ -41,7 +46,7 @@ function StatementTable() {
                         <tr key={expense.id}>
                             <td>{expense.user_name}</td>
                             <td>{expense.category}</td>
-                            <td>${expense.amount.toFixed(2)}</td>
+                            <td>${formatAmount(expense.amount)}</td>
                             <td>{new Date(expense.date).toLocaleDateString()}</td>
                         </tr>
                     ))}

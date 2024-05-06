@@ -1,4 +1,60 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../InputExpensePage/InputExpensePage.scss";
+import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
+import InputExpense from "../../components/InputExpense/InputExpense";
+import SubmitButton from "../../components/SubmitButton/SubmitButton";
+
+function InputExpensePage() {
+    const [expenseData, setExpenseData] = useState({
+        amount: '',
+        category: '',
+        userName: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setExpenseData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleFormSubmit = async () => {
+        try {
+            const payload = {
+                user_name: expenseData.userName, // ensuring the payload matches backend expectations
+                category: expenseData.category,
+                amount: parseFloat(expenseData.amount) // parsing to float as expected by backend
+            };
+            const response = await axios.post('http://localhost:8080/expenses', payload);
+            alert('Expense submitted successfully!');
+            setExpenseData({ amount: '', category: '', userName: '' }); // reset form
+        } catch (error) {
+            console.error('Failed to submit expense:', error);
+            alert('Failed to submit expense. Please try again.');
+        }
+    };
+
+    return (
+        <div>
+            <BudgetStatus />
+            <InputExpense 
+                expenseData={expenseData} 
+                onInputChange={handleInputChange} 
+            />
+            <SubmitButton onClick={handleFormSubmit} />
+        </div>
+    );
+}
+
+export default InputExpensePage;
+
+
+
+
+
+/*import { useEffect, useState } from "react";
 import axios from "axios";
 import "../InputExpensePage/InputExpensePage.scss";
 import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
@@ -51,7 +107,7 @@ function InputExpensePage() {
 }
 
 export default InputExpensePage;
-
+*/
 
 
 /*
