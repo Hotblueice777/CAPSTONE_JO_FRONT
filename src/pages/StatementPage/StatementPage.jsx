@@ -2,13 +2,17 @@ import React from 'react';
 import BudgetStatus from '../../components/BudgetStatus/BudgetStatus';
 import StatementTable from '../../components/StatementTable/StatementTable';
 import BackButton from '../../components/BackButton/BackButton';
+import "../StatementPage/StatementPage.scss";
+
 
 function StatementPage() {
     return (
-        <div>
-            <BudgetStatus />
-            <StatementTable />
-            <BackButton />
+        <div className='statementpage'> 
+           <div className='statementpage__container'>
+               <BudgetStatus />
+               <StatementTable />
+               <BackButton />
+           </div>
         </div>
     );
 }

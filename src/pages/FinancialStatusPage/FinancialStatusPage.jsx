@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FinancialStatus from "../../components/FinancialStatus/FinancialStatus";
 import BackButton from "../../components/BackButton/BackButton";
-import "./FinancialStatusPage.scss"; 
+import "../FinancialStatusPage/FinancialStatusPage.scss"; 
 
 function FinancialStatusPage() {
   const [financialData, setFinancialData] = useState({
@@ -31,9 +31,13 @@ function FinancialStatusPage() {
   }, []);
 
   return (
-    <div>
+    <div className='fstatuspage'>
+      <div className='fstatuspage__container'>
+      <div className='fstatuspage__main'>
       <FinancialStatus {...financialData} />
       <BackButton />
+      </div>
+      </div>
     </div>
   );
 }
@@ -59,7 +63,7 @@ function FinancialStatusPage() {
   useEffect(() => {
     const fetchFinancialData = async () => {
       try {
-        // Updating the URL to match your backend configuration
+
         const response = await axios.get('http://localhost:8080/budget/financial-status');
         setFinancialData({
           ...financialData,

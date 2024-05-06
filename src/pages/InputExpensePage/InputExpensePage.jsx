@@ -1,5 +1,8 @@
+// ---------5:32PM----------------------------------
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 import "../InputExpensePage/InputExpensePage.scss";
 import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
 import InputExpense from "../../components/InputExpense/InputExpense";
@@ -12,67 +15,26 @@ function InputExpensePage() {
         userName: ''
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setExpenseData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+    const location = useLocation();
 
-    const handleFormSubmit = async () => {
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id');
+        if (id) {
+            fetchExpenseById(id);
+        }
+    }, [location]);
+
+    const fetchExpenseById = async (id) => {
         try {
-            const payload = {
-                user_name: expenseData.userName, // ensuring the payload matches backend expectations
-                category: expenseData.category,
-                amount: parseFloat(expenseData.amount) // parsing to float as expected by backend
-            };
-            const response = await axios.post('http://localhost:8080/expenses', payload);
-            alert('Expense submitted successfully!');
-            setExpenseData({ amount: '', category: '', userName: '' }); // reset form
+            const response = await axios.get(`http://localhost:8080/expenses/${id}`);
+            const { amount, category, userName } = response.data;
+            setExpenseData({ amount, category, userName });
         } catch (error) {
-            console.error('Failed to submit expense:', error);
-            alert('Failed to submit expense. Please try again.');
+            console.error('Failed to fetch expense:', error);
         }
     };
 
-    return (
-        <div>
-            <BudgetStatus />
-            <InputExpense 
-                expenseData={expenseData} 
-                onInputChange={handleInputChange} 
-            />
-            <SubmitButton onClick={handleFormSubmit} />
-        </div>
-    );
-}
-
-export default InputExpensePage;
-
-
-
-
-
-/*import { useEffect, useState } from "react";
-import axios from "axios";
-import "../InputExpensePage/InputExpensePage.scss";
-import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
-import InputExpense from "../../components/InputExpense/InputExpense";
-import SubmitButton from "../../components/SubmitButton/SubmitButton";
-
-function InputExpensePage() {
-    const [expenseData, setExpenseData] = useState({
-        amount: '',
-        category: '',
-        userName: ''
-    });
-
-    // Fetch budget data when the component mounts
-    useEffect(() => {
-        // Fetch the budget and update local state (not shown)
-    }, []);
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setExpenseData(prev => ({
@@ -82,24 +44,125 @@ function InputExpensePage() {
     };
 
     const handleFormSubmit = async () => {
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id'); 
+    
+        const payload = {
+            user_name: expenseData.userName, 
+            category: expenseData.category,
+            amount: parseFloat(expenseData.amount) 
+        };
+    
         try {
-            // API call to submit the form data
-            const response = await axios.post('http://localhost:8080/expenses', expenseData);
-            alert('Expense submitted successfully!');
-            // Optionally, reset the form or handle navigation
+            let response;
+            if (id) {
+                response = await axios.put(`http://localhost:8080/expenses/${id}`, payload);
+                alert('Expense updated successfully!');
+            } else {
+                response = await axios.post('http://localhost:8080/expenses', payload);
+                alert('Expense submitted successfully!');
+            }
             setExpenseData({ amount: '', category: '', userName: '' });
         } catch (error) {
             console.error('Failed to submit expense:', error);
             alert('Failed to submit expense. Please try again.');
         }
     };
-
+    
     return (
-        <div>
+            <div className="expensepage">
+            <div className="expensepage__container">
+                <div className="expensepage__mainarea">
+                <BudgetStatus />
+                <InputExpense 
+                     expenseData={expenseData} 
+                     onInputChange={handleInputChange} 
+                />
+                 <SubmitButton onClick={handleFormSubmit} />
+                 </div>
+            </div>
+        </div>
+    );
+}
+
+export default InputExpensePage;
+
+
+
+
+/*---------2024/05/06/5:30PM-----用useparams做，但要改太多，没时间了-------
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom'; 
+import "../InputExpensePage/InputExpensePage.scss";
+import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
+import InputExpense from "../../components/InputExpense/InputExpense";
+import SubmitButton from "../../components/SubmitButton/SubmitButton";
+
+function InputExpensePage() {
+    const [expenseData, setExpenseData] = useState({
+        amount: '',
+        category: '',
+        userName: ''
+    });
+
+    const { id } = useParams(); 
+
+    useEffect(() => {
+        if (id) {
+            fetchExpenseById(id);
+        }
+    }, [id]); 
+
+    const fetchExpenseById = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/expenses/${id}`);
+            const { amount, category, user_name } = response.data;
+            setExpenseData({ amount, category, userName: user_name });
+        } catch (error) {
+            console.error('Failed to fetch expense:', error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setExpenseData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault(); 
+        const payload = {
+            user_name: expenseData.userName,
+            category: expenseData.category,
+            amount: parseFloat(expenseData.amount)
+        };
+    
+        try {
+            let response;
+            if (id) {
+                response = await axios.put(`http://localhost:8080/expenses/${id}`, payload);
+                alert('Expense updated successfully!');
+            } else {
+                response = await axios.post('http://localhost:8080/expenses', payload);
+                alert('Expense submitted successfully!');
+            }
+            setExpenseData({ amount: '', category: '', userName: '' }); 
+        } catch (error) {
+            console.error('Failed to submit expense:', error);
+            alert('Failed to submit expense. Please try again.');
+        }
+    };
+    
+    return (
+        <div className="expensepage">
             <BudgetStatus />
             <InputExpense 
                 expenseData={expenseData} 
-                onInputChange={handleInputChange} 
+                onInputChange={handleInputChange}
             />
             <SubmitButton onClick={handleFormSubmit} />
         </div>
@@ -107,25 +170,21 @@ function InputExpensePage() {
 }
 
 export default InputExpensePage;
+
 */
 
 
-/*
-function InputExpensePage() {
-      
 
-    return(
 
-        <div>
-            <BudgetStatus/>
-            <InputExpense/>
-            <SubmitButton onClick={handleFormSubmit} />
-        </div>
-    );
-}
 
-export default InputExpensePage;
-*/
+
+
+
+
+
+
+
+
 
 
 

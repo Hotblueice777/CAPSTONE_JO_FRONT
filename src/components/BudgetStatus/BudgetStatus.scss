@@ -6,6 +6,8 @@
 
 .BudgetStatus{
 
+    
+
 &__container-mainarea{
     display:flex;
     width:100%;
@@ -26,4 +28,12 @@
     font-weight: 300;
 }
 
+&__budget{
+
+    font-family: 'POP';
+    font-weight: 700;
+    font-size: 1.5rem;
+    color:#d08774;
+    text-decoration: underline;
+}
 }

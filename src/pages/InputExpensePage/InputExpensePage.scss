@@ -1,0 +1,24 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.expensepage{
+
+
+&__container{
+
+    background-color: #ebeeef;
+    padding-bottom:4rem;
+
+    width:calc(100% - 4rem);
+    margin:auto;
+    gap:2rem;
+
+}
+
+&__mainarea{
+    padding:2rem 5rem;
+}
+
+
+}

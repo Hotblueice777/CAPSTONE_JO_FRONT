@@ -4,8 +4,7 @@ import SetBudgetPage from "./pages/SetBudgetPage/SetBudgetPage";
 import InputExpensePage from "./pages/InputExpensePage/InputExpensePage";
 import StatementPage from "./pages/StatementPage/StatementPage";
 import FinancialStatusPage from "./pages/FinancialStatusPage/FinancialStatusPage";
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage'; // Make sure this component exists
-
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage'; 
 import './App.scss';
 
 function App() {
@@ -18,7 +17,9 @@ function App() {
           <Route path="/budget" element={<SetBudgetPage />} />
           <Route path="/statement" element={<StatementPage />} />
           <Route path="/financial-status" element={<FinancialStatusPage />} />
-          <Route path="*" element={<NotFoundPage />} /> {/* Handles any undefined URL */}
+          <Route path="/input-expense" element={<InputExpensePage />} />
+          <Route path="/input-expense/:id" element={<InputExpensePage />} />
+          <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
       </Router>
     </div>

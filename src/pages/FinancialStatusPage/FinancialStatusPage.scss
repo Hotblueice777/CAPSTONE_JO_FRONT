@@ -1,0 +1,29 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.fstatuspage{
+
+   
+
+   &__container{
+    background-color: #ebeeef;
+    display: flex;
+    margin:2rem;
+    padding:4rem 0;
+
+
+   }
+
+   &__main{
+    display: flex;
+    flex-direction: column;
+      width: calc(100% - 4rem);
+      margin:auto;
+      gap:2rem;
+
+   }
+
+
+
+}

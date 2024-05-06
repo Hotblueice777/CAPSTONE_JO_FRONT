@@ -21,9 +21,6 @@ function SetBudget({ budget, onBudgetChange, onSubmit }) {
                         <img className="setbudget__input-icon" src={moneyicon} alt="money icon"/> 
                     </div>
                 </div>
-                {/* <button onClick={onSubmit} className="setbudget__submit-button"> */}
-                    {/* Submit */}
-                {/* </button> */}
             </div>
         </div>
     );
