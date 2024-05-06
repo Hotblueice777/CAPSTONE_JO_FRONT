@@ -1,0 +1,31 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+
+.backbutton{
+
+&__button-container{
+    display:flex;
+    justify-content:flex-end;
+    padding-right:4rem;
+   }
+ 
+   &__button{
+    display:flex;
+    background-color: #4a6570;
+    color:#ebeeef;
+    border:none;
+    width:8rem;
+    height:2rem;
+    justify-content:center;
+    align-items: center;
+   }
+
+   &__button-text{
+    font-size: 0.875rem;
+   }
+
+}
+
+
