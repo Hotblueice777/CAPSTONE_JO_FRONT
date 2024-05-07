@@ -35,7 +35,9 @@ function FinancialStatusPage() {
       <div className='fstatuspage__container'>
       <div className='fstatuspage__main'>
       <FinancialStatus {...financialData} />
-      <BackButton />
+      <div className='fstatuspage__btn-container'>
+      <BackButton className='fstatuspage__btn'/>
+      </div>
       </div>
       </div>
     </div>

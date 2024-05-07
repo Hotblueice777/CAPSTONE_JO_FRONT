@@ -13,6 +13,13 @@
         display:flex;
         flex-direction: column;
 
+
+
+        width:100%;
+
+
+
+
         @include desktop{
             display:flex;
         flex-direction: row-reverse;
@@ -20,10 +27,25 @@
 
 
 
+        align-items: center;
+
+
         }
 
 
     }
+
+    &__title-label{
+    font-family:'POP';
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding:0;
+    padding-top:1rem;
+    line-height: 0;
+    }
+
+
+
 
     &__title-container{
         display:flex;
@@ -32,12 +54,20 @@
     }
 
     &__container-up{
-
+        flex:1;
 
         @include desktop{
-        width:100%;
-    }
+            width: 50%; 
 
+    }
+}
+
+    &__container-down{
+        flex:1;
+        @include desktop{
+            width: 50%; 
+
+        }
     }
 
 
@@ -90,11 +120,14 @@
     }
 
 
+
+
     &__summary-title{
 
         line-height: 3rem;
 
     }
+
 
     &__summary-text{
         display:flex;
@@ -111,6 +144,14 @@
         font-weight: 300;
         font-size: 0.875rem;
         color:#d08774;
+
+        @include tablet{
+            display: flex;
+            flex-direction: row;
+            gap:2rem;
+
+        }
+
     }
 
 
@@ -119,6 +160,7 @@
 
     &__item{
         list-style-type:none;
+        
         border-bottom:1px solid rgba(74, 101, 112, 0.2);
 
 

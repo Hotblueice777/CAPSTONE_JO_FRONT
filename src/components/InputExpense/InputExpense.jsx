@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../InputExpense/InputExpense.scss";
-import moneyicongry from "../../assets/icons/money_gry.jpg";
+// import moneyicongry from "../../assets/icons/money_gry.jpg";
 
 
 function InputExpense({ expenseData, onInputChange }) {
@@ -13,6 +13,7 @@ function InputExpense({ expenseData, onInputChange }) {
                     <div className="inputexpense__bottom-container" >
 
                         <div className="inputexpense__input-container">
+                             <label className="inputexpense__select-label">Input expenses:</label>
                              <input 
                                 className="inputexpense__input" 
                                 type="text" 
@@ -21,7 +22,7 @@ function InputExpense({ expenseData, onInputChange }) {
                                 onChange={onInputChange} 
                                 name="amount"
                              />
-                             <img className="inputexpense__input-icon" src={moneyicongry} alt="money_icon"/> 
+                             {/* <img className="inputexpense__input-icon" src={moneyicongry} alt="money_icon"/>  */}
                         </div>
 
                         <div>
@@ -47,6 +48,7 @@ function InputExpense({ expenseData, onInputChange }) {
                         </div>
 
                         <div className="inputexpense__input-container">
+                            <label className="inputexpense__select-label">Input your name:</label>
                             <input 
                                 className="inputexpense__input" 
                                 type="text" 

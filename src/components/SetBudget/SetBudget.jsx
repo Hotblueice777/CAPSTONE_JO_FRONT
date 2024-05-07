@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./SetBudget.scss";
-import moneyicon from "../../assets/icons/money.jpg";
+// import moneyicon from "../../assets/icons/money.jpg";
 
 function SetBudget({ budget, onBudgetChange, onSubmit }) {
     return (
@@ -18,7 +18,7 @@ function SetBudget({ budget, onBudgetChange, onSubmit }) {
                             value={budget}
                             onChange={(e) => onBudgetChange(e.target.value)}
                         />  
-                        <img className="setbudget__input-icon" src={moneyicon} alt="money icon"/> 
+                        {/* <img className="setbudget__input-icon" src={moneyicon} alt="money icon"/>  */}
                     </div>
                 </div>
             </div>

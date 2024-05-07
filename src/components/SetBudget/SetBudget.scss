@@ -4,18 +4,15 @@
 
 
 .setbudget{
-     background-color: white;
      padding:2rem 3rem;
 
 
      &__container{
         display:flex;
         flex-direction: column;
-        gap:7rem;
-
-
-        background-color: #ebeeef;
-        padding:4rem 0;
+        gap:3rem;
+        padding:2rem 0;
+        padding-top:1rem;
         
      }
 
@@ -48,7 +45,7 @@
        width:40vw;
        margin:auto;
        height:4rem;
-       border: 1px solid red;
+       border: 1px solid #ebeeef;
       //  padding:0.75rem 3.25rem 3.25rem 4rem;
 
        &:hover {

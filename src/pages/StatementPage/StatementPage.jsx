@@ -9,9 +9,13 @@ function StatementPage() {
     return (
         <div className='statementpage'> 
            <div className='statementpage__container'>
+           <div className='statementpage__main'>
+
                <BudgetStatus />
                <StatementTable />
                <BackButton />
+            </div>
+
            </div>
         </div>
     );

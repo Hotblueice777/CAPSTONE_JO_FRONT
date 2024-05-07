@@ -21,6 +21,13 @@
       gap:1rem;
       margin-bottom:1rem;
 
+
+      @include mobile{
+        flex-direction: row;
+        justify-content:space-between;
+        width: calc(100% - 4rem);
+
+      }
   
       @include tablet {
         flex-direction: row;

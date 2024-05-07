@@ -10,7 +10,13 @@
     background-color: #ebeeef;
     display: flex;
     margin:2rem;
-    padding:4rem 0;
+    padding:1rem 0 4rem 0;
+
+    @include desktop{
+      width: 84vw;
+      margin:auto;
+
+}
 
 
    }
@@ -22,8 +28,22 @@
       margin:auto;
       gap:2rem;
 
-   }
+      @include tablet{
+         width: calc(100% - 14rem);
+         margin:auto;
 
+      }
+
+
+}
+
+
+   &__btn-container{
+      display: flex;
+      justify-content: flex-end; 
+        width: 100%;
+
+   }
 
 
 }

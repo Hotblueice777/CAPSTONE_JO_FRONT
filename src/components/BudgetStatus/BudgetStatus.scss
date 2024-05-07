@@ -14,7 +14,7 @@
 
 
     flex-direction: column;
-    gap:5rem;
+    gap:3rem;
 
     @include desktop{
         width:50%;
@@ -23,9 +23,13 @@
 }
 
 &__label{
+
     font-family:'POP';
     font-size: 1.5rem;
     font-weight: 300;
+    padding:0;
+    padding-top:0;
+    line-height: 1rem;
 }
 
 &__budget{
@@ -33,6 +37,7 @@
     font-family: 'POP';
     font-weight: 700;
     font-size: 1.5rem;
+    line-height: 1rem;
     color:#d08774;
     text-decoration: underline;
 }

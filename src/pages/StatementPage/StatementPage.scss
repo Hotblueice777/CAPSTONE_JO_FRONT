@@ -6,12 +6,51 @@
    
 
    &__container{
-    background-color: #ebeeef;
+      display: flex;
+      flex-direction: column;
+      background-color: #ebeeef;
+      padding:0 3rem;
+      width: 67vw;
+      margin:auto;
 
 
 
+      @include tablet{
+      width:calc(100% - 10rem);
+         margin:auto;
+
+      }
+
+    @include desktop{
+      width: 77vw;
+      margin:auto;
+      
+    }
 
    }
+
+   &__main{
+      display: flex;
+      flex-direction: column;
+      padding:0;
+      gap:1.5rem;
+      padding-bottom:3rem;
+      padding-top:2rem;
+
+
+
+      @include tablet{
+         
+      padding:0;
+      padding-bottom:3rem;
+      padding-top:2rem;
+
+      }
+
+   }
+
+
+
 
 
 

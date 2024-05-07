@@ -35,6 +35,7 @@ function Header() {
                        src={financialStatusSrc} 
                        alt="financialStatus" 
                        tooltipText="Click here to view and edit your spending history."/>
+
                     </NavLink>
                     <NavLink 
                        to="/statement" 
@@ -48,6 +49,7 @@ function Header() {
                        src={statementSrc} 
                        alt="statement" 
                        tooltipText="Click here for monthly balance report."/>
+
                     </NavLink>
                 </div>
             </div> 

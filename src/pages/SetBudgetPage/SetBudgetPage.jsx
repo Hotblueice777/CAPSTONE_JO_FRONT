@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./SetBudgetPage.scss";
+import "../SetBudgetPage/SetBudgetPage.scss";
 import SetBudget from "../../components/SetBudget/SetBudget";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import BackButton from "../../components/BackButton/BackButton";
@@ -28,12 +28,17 @@ function SetBudgetPage() {
     };
 
     return (
-        <div>
-            <SetBudget budget={budget} onBudgetChange={setBudget} />
-            {/* onSubmit={handleSaveBudget}  */}
-            <SubmitButton onClick={handleSaveBudget} />
-            <BackButton />
-
+        <div className="setbudget">
+          <div className="setbudget__container">
+            <div className="setbudget__main">
+               <SetBudget budget={budget} onBudgetChange={setBudget} />
+                 {/* onSubmit={handleSaveBudget}  */}
+                  <div className="setbudget__btn">
+                    <SubmitButton onClick={handleSaveBudget} />
+                    <BackButton />
+                 </div>
+            </div>
+          </div>
         </div>
     );
 }
