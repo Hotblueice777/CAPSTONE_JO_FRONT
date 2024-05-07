@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import "../InputExpensePage/InputExpensePage.scss";
 import BudgetStatus from "../../components/BudgetStatus/BudgetStatus";
 import InputExpense from "../../components/InputExpense/InputExpense";
@@ -16,6 +16,7 @@ function InputExpensePage() {
     });
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -43,6 +44,35 @@ function InputExpensePage() {
         }));
     };
 
+// --------------------6:40PM  new modify----------------------------------------
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id');
+
+        const payload = {
+            user_name: expenseData.userName, 
+            category: expenseData.category,
+            amount: parseFloat(expenseData.amount)
+        };
+
+        try {
+            if (id) {
+                await axios.put(`http://localhost:8080/expenses/${id}`, payload);
+                alert('Expense updated successfully!');
+            } else {
+                await axios.post('http://localhost:8080/expenses', payload);
+                alert('Expense submitted successfully!');
+            }
+            navigate('/statement'); // Redirect to the statement page
+        } catch (error) {
+            console.error('Failed to submit expense:', error);
+            alert('Failed to submit expense. Please try again.');
+        }
+    };
+
+/*-----------------------6:39PM----------------------------------------
     const handleFormSubmit = async () => {
         const params = new URLSearchParams(location.search);
         const id = params.get('id'); 
@@ -68,6 +98,7 @@ function InputExpensePage() {
             alert('Failed to submit expense. Please try again.');
         }
     };
+    */
     
     return (
             <div className="expensepage">
@@ -90,7 +121,9 @@ export default InputExpensePage;
 
 
 
-/*---------2024/05/06/5:30PM-----用useparams做，但要改太多，没时间了-------
+
+
+/*---------2024/05/06/5:30PM-----an other way useparams, but time limited, leave it to step 2 -------
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
