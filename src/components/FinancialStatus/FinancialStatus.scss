@@ -8,30 +8,19 @@
 .financialstatus{
     display:flex;
 
-
     &__container{
         display:flex;
         flex-direction: column;
 
-
-
         width:100%;
-
-
-
 
         @include desktop{
             display:flex;
         flex-direction: row-reverse;
         justify-content: space-evenly;
-
-
-
         align-items: center;
 
-
         }
-
 
     }
 
@@ -43,9 +32,6 @@
     padding-top:1rem;
     line-height: 0;
     }
-
-
-
 
     &__title-container{
         display:flex;
@@ -86,8 +72,6 @@
 
     }
 
-
-
     &__summary-container{
         display:flex;
         flex-direction: row;
@@ -101,9 +85,7 @@
 
         } 
 
-
     }
-
 
     &__summary-title{
 
@@ -118,9 +100,6 @@
     &__summary-image{
         width:8rem;
     }
-
-
-
 
     &__summary-title{
 
@@ -154,17 +133,10 @@
 
     }
 
-
-
-
-
     &__item{
         list-style-type:none;
         
         border-bottom:1px solid rgba(74, 101, 112, 0.2);
-
-
     }
-
 
 }
