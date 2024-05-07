@@ -36,7 +36,6 @@ function StatementTable() {
     };
 
 
-    // For a single line can be clicked, and out of the edit and delete panel
 
     const handleRowClick = (expense) => {
         setSelectedExpense(expense);
@@ -57,7 +56,7 @@ function StatementTable() {
         window.location.href = `/input-expense?id=${selectedExpense.id}`; 
         setShowModal(false);
     };
-// ------------------------------------------------------------------------------
+
 
     return (
         <div className="statement">
