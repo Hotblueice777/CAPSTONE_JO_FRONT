@@ -19,7 +19,7 @@
       border:1px solid whitesmoke;
       border-bottom: none;
       gap:1rem;
-      margin-bottom:2rem;
+      margin-bottom:1rem;
 
   
       @include tablet {
@@ -39,7 +39,15 @@
 
     }
 
+    .header__statement--active img {
+    filter: brightness(0.9); 
+    }
+  
 
+    img{
+      height:4.5rem;
+    }
 
 
 }
+
